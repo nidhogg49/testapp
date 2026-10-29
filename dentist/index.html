@@ -1,0 +1,1176 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Стоматология Степанова (Copy)</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Onest:wght@500;600;700&display=swap">
+<style>
+/* Layout: телефон — шапка, прокручиваемое тело, вкладки снизу; путь пациента открывается по этапам */
+:root{
+  --bg:#eef2f3;--surface:#ffffff;--surface-2:#f4f8f8;--ink:#0b1719;--muted:#657578;--line:#dfe8e9;
+  --accent:#0e7c86;--accent-ink:#ffffff;--accent-soft:#e0f2f3;
+  --ok:#0b7a52;--ok-soft:#e1f3eb;--warn:#97600a;--warn-soft:#fdf0d9;--alarm:#c42b2b;--alarm-soft:#fcebeb;
+  --r:20px;--font-ui:"Golos Text",system-ui,-apple-system,"Segoe UI",sans-serif;--font-dsp:"Onest","Golos Text",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#060a0b;--surface:#101819;--surface-2:#182224;--ink:#e7eeef;--muted:#8fa2a5;--line:#223032;
+  --accent:#4fc3cd;--accent-ink:#04191b;--accent-soft:#12282b;
+  --ok:#4ed3a1;--ok-soft:#0f2720;--warn:#e7b25a;--warn-soft:#2a2113;--alarm:#ff8080;--alarm-soft:#2d1618;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#060a0b;--surface:#101819;--surface-2:#182224;--ink:#e7eeef;--muted:#8fa2a5;--line:#223032;
+  --accent:#4fc3cd;--accent-ink:#04191b;--accent-soft:#12282b;
+  --ok:#4ed3a1;--ok-soft:#0f2720;--warn:#e7b25a;--warn-soft:#2a2113;--alarm:#ff8080;--alarm-soft:#2d1618;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-ui);font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+a{color:var(--accent)}
+input,textarea{font:inherit;color:inherit}
+
+.phone{max-width:430px;margin:0 auto;height:100%;background:var(--surface);display:flex;flex-direction:column;position:relative;overflow:hidden}
+@media(min-width:900px){body{display:flex;align-items:center;justify-content:center;padding:24px 0}
+  .phone{height:min(880px,calc(100vh - 48px));border-radius:38px;box-shadow:0 30px 80px rgba(6,20,22,.28);border:1px solid var(--line)}}
+.screen{display:none;flex-direction:column;flex:1;min-height:0}
+.screen.on{display:flex}
+.body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:14px 26px;scrollbar-width:none}
+.body::-webkit-scrollbar{display:none}
+.body.flush{padding-bottom:112px}
+
+.top{display:flex;align-items:center;gap:12px;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:14px 10px;border-bottom:1px solid transparent}
+.top.sep{border-color:var(--line)}
+.back{width:38px;height:38px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;flex:none}
+.top h1{font-family:var(--font-dsp);font-size:19px;font-weight:600;margin:0;letter-spacing:-.01em;flex:1;min-width:0}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:600;font-size:13px;flex:none}
+.logo{display:flex;align-items:center;gap:10px;min-width:0}
+.mark{width:34px;height:34px;flex:none}
+.logo .wm{display:flex;flex-direction:column;line-height:1.08;min-width:0}
+.logo .wm b{font-family:var(--font-dsp);font-weight:700;font-size:15px}
+.logo .wm span{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+h2{font-family:var(--font-dsp);font-size:22px;font-weight:600;letter-spacing:-.02em;margin:0 0 4px;text-wrap:balance}
+h3{font-family:var(--font-dsp);font-size:16px;font-weight:600;margin:0 0 8px;letter-spacing:-.01em}
+.lead{color:var(--muted);margin:0 0 18px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:22px 0 10px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.eyebrow button{color:var(--accent);font-size:12px;letter-spacing:0;text-transform:none;font-weight:500}
+.muted{color:var(--muted)}
+.tnum{font-variant-numeric:tabular-nums}
+.sec-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.sec-head h2{flex:1;min-width:0}
+
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.card.flat{background:var(--surface-2);border-color:transparent}
+.stack{display:flex;flex-direction:column;gap:10px}
+.row{display:flex;align-items:center;gap:12px}
+.row>.grow{flex:1;min-width:0}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted);white-space:nowrap;flex:none}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.alarm{background:var(--alarm-soft);color:var(--alarm)}
+.pill.acc{background:var(--accent-soft);color:var(--accent)}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px 18px;border-radius:16px;background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:15px;text-decoration:none;transition:transform .12s,filter .12s}
+.btn:active{transform:scale(.985);filter:brightness(1.08)}
+.btn.ghost{background:var(--surface-2);color:var(--ink)}
+.btn.line{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.btn.alarm{background:var(--alarm);color:#fff}
+.btn.ok{background:var(--ok-soft);color:var(--ok)}
+.btn.sm{padding:10px 14px;font-size:13.5px;border-radius:12px;width:auto}
+.btnrow{display:flex;gap:8px}
+.footer{padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:12px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:8px}
+
+.auth{flex:1;display:flex;flex-direction:column;justify-content:center;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px));padding-block:24px}
+.auth .mark{width:68px;height:68px;margin-bottom:22px}
+.field{display:flex;align-items:center;gap:10px;background:var(--surface-2);border:1px solid transparent;border-radius:16px;padding:15px 16px;margin:18px 0 10px}
+.field:focus-within{border-color:var(--accent)}
+.field input{flex:1;min-width:0;background:none;border:0;outline:none;font-size:18px;font-variant-numeric:tabular-nums}
+.code{display:flex;gap:10px;margin:22px 0 14px}
+.code i{flex:1;height:60px;border-radius:16px;background:var(--surface-2);display:grid;place-items:center;font-style:normal;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums;border:1px solid transparent}
+.code i.fill{border-color:var(--accent);color:var(--accent)}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.keypad button{height:54px;border-radius:14px;background:var(--surface-2);font-size:21px;font-weight:600;font-variant-numeric:tabular-nums;font-family:var(--font-dsp)}
+.keypad button.blank{background:none}
+
+.stageline{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;margin:0 -18px;padding:2px 18px 6px}
+.stageline::-webkit-scrollbar{display:none}
+.stagecard{flex:none;width:146px;text-align:left;background:var(--surface-2);border:1px solid transparent;border-radius:18px;padding:13px 13px 14px}
+.stagecard .num{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:600;background:var(--surface);color:var(--muted);margin-bottom:9px;font-variant-numeric:tabular-nums}
+.stagecard b{display:block;font-size:14px;font-weight:600;line-height:1.25}
+.stagecard small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.stagecard.done .num{background:var(--ok-soft);color:var(--ok)}
+.stagecard.now{background:var(--accent-soft);border-color:color-mix(in oklab,var(--accent) 35%,transparent)}
+.stagecard.now .num{background:var(--accent);color:var(--accent-ink)}
+.stagecard.now small{color:var(--accent)}
+.stagecard.lock{opacity:.52}
+.stagecard.lock .num{color:var(--muted)}
+.secrow{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:15px}
+.secrow b{display:block;font-family:var(--font-dsp);font-size:15.5px;font-weight:600}
+.secrow small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.secrow.lock{opacity:.55}
+
+.hero{border-radius:24px;padding:18px;background:linear-gradient(150deg,var(--accent) 0%,color-mix(in oklab,var(--accent) 66%,#000) 100%);color:#fff;position:relative;overflow:hidden;display:block;width:100%;text-align:left}
+.hero:after{content:"";position:absolute;right:-50px;top:-70px;width:190px;height:190px;border-radius:50%;background:rgba(255,255,255,.1)}
+.hero .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75;font-weight:600}
+.hero .big{font-family:var(--font-dsp);font-size:26px;font-weight:700;letter-spacing:-.02em;margin:5px 0 2px}
+.hero .sub{opacity:.85;font-size:13.5px}
+.hero .days{position:absolute;right:16px;top:16px;background:rgba(255,255,255,.16);border-radius:12px;padding:7px 11px;text-align:center;line-height:1.1}
+.hero .days b{display:block;font-size:19px;font-family:var(--font-dsp);font-variant-numeric:tabular-nums}
+.hero .days span{font-size:10px;opacity:.8}
+
+.item{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.item .ic{width:38px;height:38px;border-radius:12px;background:var(--surface-2);display:grid;place-items:center;flex:none;color:var(--accent);font-weight:600}
+.item b{display:block;font-weight:600;font-size:14.5px}
+.item small{color:var(--muted);font-size:12.5px;display:block}
+
+.chk{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--surface-2);border:1px solid transparent;border-radius:16px;padding:13px 14px;transition:opacity .15s}
+.chk .box{width:22px;height:22px;border-radius:7px;border:1.5px solid var(--line);background:var(--surface);flex:none;display:grid;place-items:center;color:transparent;margin-top:1px}
+.chk.on .box{background:var(--ok);border-color:var(--ok);color:#fff}
+.chk.on{opacity:.58}
+.chk b{display:block;font-weight:500;font-size:14.5px;line-height:1.35}
+.chk small{color:var(--muted);font-size:12.5px;display:block;margin-top:2px}
+.term{display:inline-block;background:var(--warn-soft);color:var(--warn);font-size:11px;font-weight:600;padding:2px 7px;border-radius:999px;margin-left:5px;white-space:nowrap}
+
+/* зубная карта */
+.teeth{background:var(--surface-2);border-radius:var(--r);padding:14px 10px}
+.jaw{display:grid;grid-template-columns:repeat(16,1fr);gap:3px}
+.jaw+.jaw{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.tooth{aspect-ratio:1/1.35;border-radius:5px 5px 7px 7px;background:var(--surface);border:1px solid var(--line);display:flex;align-items:flex-end;justify-content:center;font-size:8px;font-variant-numeric:tabular-nums;color:var(--muted);padding-bottom:2px;min-width:0}
+.tooth.sel{outline:2px solid var(--accent);outline-offset:1px}
+.tooth.caries{background:var(--alarm-soft);border-color:color-mix(in oklab,var(--alarm) 40%,transparent);color:var(--alarm)}
+.tooth.filled{background:var(--accent-soft);border-color:color-mix(in oklab,var(--accent) 30%,transparent);color:var(--accent)}
+.tooth.crown{background:var(--warn-soft);border-color:color-mix(in oklab,var(--warn) 35%,transparent);color:var(--warn)}
+.tooth.implant{background:var(--ok-soft);border-color:color-mix(in oklab,var(--ok) 35%,transparent);color:var(--ok)}
+.tooth.missing{background:transparent;border-style:dashed;opacity:.5}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.legend span{font-size:11px;color:var(--muted);display:inline-flex;align-items:center;gap:5px}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block;border:1px solid var(--line)}
+
+/* смета */
+.est{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px}
+.est b{display:block;font-weight:600;font-size:14.5px}
+.est small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.est .price{font-family:var(--font-dsp);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+.total{display:flex;justify-content:space-between;align-items:baseline;background:var(--accent-soft);color:var(--accent);border-radius:16px;padding:14px 16px;margin-top:10px}
+.total b{font-family:var(--font-dsp);font-size:21px;font-variant-numeric:tabular-nums}
+
+.ringcard{display:flex;align-items:center;gap:16px;background:var(--surface-2);border-radius:var(--r);padding:16px}
+.ring{position:relative;width:74px;height:74px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--font-dsp);font-weight:700;font-size:17px;font-variant-numeric:tabular-nums}
+.grp{display:flex;flex-wrap:wrap;gap:6px;flex:1;min-width:0}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 14px;border-radius:999px;border:1px solid var(--line);font-size:13.5px;background:var(--surface)}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent);font-weight:500}
+.progress{height:4px;border-radius:4px;background:var(--surface-2);overflow:hidden;margin-bottom:16px}
+.progress i{display:block;height:100%;background:var(--accent);border-radius:4px;transition:width .3s}
+.qlabel{display:block;font-weight:600;font-size:14.5px;margin:0 0 9px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:15px}
+.ti{width:100%;background:var(--surface-2);border:1px solid transparent;border-radius:14px;padding:13px 14px;outline:none;font-size:15px;resize:vertical}
+.ti:focus{border-color:var(--accent)}
+.opt{display:flex;align-items:center;gap:11px;padding:13px 14px;border:1px solid var(--line);border-radius:14px;width:100%;text-align:left}
+.opt.on{border-color:var(--accent);background:var(--accent-soft)}
+.opt .dot{width:19px;height:19px;border-radius:50%;border:1.5px solid var(--line);flex:none;display:grid;place-items:center}
+.opt.on .dot{border-color:var(--accent)}
+.opt.on .dot:after{content:"";width:9px;height:9px;border-radius:50%;background:var(--accent)}
+.check{width:21px;height:21px;border-radius:7px;border:1.5px solid var(--line);flex:none;display:grid;place-items:center;color:transparent}
+.opt.on .check,.item.on .check{background:var(--accent);border-color:var(--accent);color:#fff}
+.scale{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.scale button{aspect-ratio:1;border-radius:10px;background:var(--surface-2);font-size:13px;font-variant-numeric:tabular-nums;display:grid;place-items:center}
+.scale button.on{background:var(--accent);color:var(--accent-ink);font-weight:600}
+
+.dates{display:flex;gap:8px;overflow-x:auto;padding:0 18px 4px;scrollbar-width:none;margin:0 -18px}
+.dates::-webkit-scrollbar{display:none}
+.date{flex:none;width:60px;padding:11px 0;border-radius:16px;background:var(--surface-2);text-align:center;line-height:1.25}
+.date span{display:block;font-size:11px;color:var(--muted)}
+.date b{display:block;font-size:18px;font-family:var(--font-dsp);font-variant-numeric:tabular-nums}
+.date.on{background:var(--accent);color:var(--accent-ink)}
+.date.on span{color:rgba(255,255,255,.8)}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.slot{padding:12px 0;border-radius:14px;border:1px solid var(--line);text-align:center;font-variant-numeric:tabular-nums;font-size:14.5px}
+.slot.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.slot.off{opacity:.33;text-decoration:line-through;pointer-events:none}
+
+.tl{position:relative;padding-left:26px}
+.tl:before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl .ev{position:relative;padding-bottom:18px}
+.tl .ev:last-child{padding-bottom:0}
+.tl .ev:before{content:"";position:absolute;left:-23px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--line)}
+.tl .ev.done:before{background:var(--ok);border-color:var(--ok)}
+.tl .ev.now:before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tl .t{font-weight:600;font-size:14.5px;font-variant-numeric:tabular-nums}
+.tl .c{color:var(--muted);font-size:13px}
+
+.acc{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+.acc+.acc{margin-top:8px}
+.acc>button{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:14px 16px;font-weight:500;font-size:14.5px}
+.acc>button .chev{margin-left:auto;color:var(--muted);transition:transform .2s;flex:none}
+.acc.open>button .chev{transform:rotate(180deg)}
+.acc .in{display:none;padding:0 16px 15px;color:var(--muted);font-size:14px}
+.acc.open .in{display:block}
+.acc .in ul{margin:0;padding-left:18px}
+.acc .in li{margin-bottom:6px}
+
+.alarm-card{background:var(--alarm-soft);border:1px solid color-mix(in oklab,var(--alarm) 32%,transparent);border-radius:var(--r);padding:16px}
+.alarm-card h3{color:var(--alarm)}
+.sign{display:flex;gap:9px;align-items:flex-start;background:var(--surface);border-radius:13px;padding:11px 13px;font-size:14px;line-height:1.35}
+.sign span{color:var(--alarm);flex:none;font-weight:700}
+.telbox{background:var(--surface);border-radius:16px;padding:14px;text-align:center;margin-top:12px}
+.telbox b{display:block;font-family:var(--font-dsp);font-size:23px;font-variant-numeric:tabular-nums;margin-bottom:12px;user-select:all}
+
+.tabs{position:absolute;left:0;right:0;bottom:0;display:flex;background:color-mix(in oklab,var(--surface) 86%,transparent);backdrop-filter:blur(16px);border-top:1px solid var(--line);padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px));padding-block:8px calc(8px + env(safe-area-inset-bottom,0px))}
+.tabs button{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10.5px;color:var(--muted);padding:4px 0}
+.tabs button.on{color:var(--accent);font-weight:600}
+
+.sheet{position:absolute;inset:0;display:none;z-index:40}
+.sheet.on{display:block}
+.sheet .scrim{position:absolute;inset:0;background:rgba(4,12,14,.45)}
+.sheet .panel{position:absolute;left:0;right:0;bottom:0;background:var(--surface);border-radius:26px 26px 0 0;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px));padding-block:10px calc(18px + env(safe-area-inset-bottom,0px));animation:up .26s cubic-bezier(.2,.8,.3,1)}
+@keyframes up{from{transform:translateY(100%)}}
+.puller{width:38px;height:4px;border-radius:4px;background:var(--line);margin:0 auto 14px}
+
+.toast{position:absolute;left:50%;bottom:92px;transform:translate(-50%,16px);background:var(--ink);color:var(--surface);padding:11px 18px;border-radius:14px;font-size:13.5px;font-weight:500;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:88%;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.done-ic{width:74px;height:74px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;margin:0 auto 20px}
+.sum{display:flex;justify-content:space-between;gap:12px;padding:9px 0;font-size:14.5px;border-bottom:1px dashed var(--line)}
+.sum:last-child{border-bottom:0;font-weight:600;font-size:16px;padding-top:13px}
+.disclaimer{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="phone">
+
+<!-- ░ ВХОД ░ -->
+<section class="screen on" id="s-phone">
+  <div class="auth">
+    <svg class="mark" viewBox="0 0 64 64" fill="none" aria-label="Стоматология Степанова"><rect width="64" height="64" rx="18" fill="var(--accent)"/><path d="M32 19c-4-3-9-3.5-12.5-1.2C15.5 20.4 14.5 26 16 33c1.2 5.6 3.4 11 5.6 13.4 1.9 2.1 4 1 4.8-1.6l1.7-5.4c.9-2.8 4.9-2.8 5.8 0l1.7 5.4c.8 2.6 2.9 3.7 4.8 1.6C42.6 44 44.8 38.6 46 33c1.5-7 .5-12.6-3.5-15.2C39 15.5 36 16 32 19z" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/></svg>
+    <h2>Вход в личный кабинет</h2>
+    <p class="lead">Пришлём код подтверждения в SMS</p>
+    <div class="field"><span class="muted">+7</span><input id="tel" inputmode="numeric" value="999 148 22 07" aria-label="Номер телефона"></div>
+    <p class="muted" style="font-size:12.5px;margin:0 0 18px">Нажимая «Получить код», вы соглашаетесь с политикой обработки персональных данных.</p>
+    <button class="btn" data-go="s-sms">Получить код</button>
+  </div>
+</section>
+
+<!-- ░ КОД ░ -->
+<section class="screen" id="s-sms">
+  <div class="top"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button></div>
+  <div class="body">
+    <h2>Код из SMS</h2>
+    <p class="lead">Отправили на +7 999 148 22 07</p>
+    <div class="code" id="code"><i></i><i></i><i></i><i></i></div>
+    <p class="muted tnum" style="font-size:13px">Отправить повторно через 00:42</p>
+    <div class="keypad">
+      <button data-k="1">1</button><button data-k="2">2</button><button data-k="3">3</button>
+      <button data-k="4">4</button><button data-k="5">5</button><button data-k="6">6</button>
+      <button data-k="7">7</button><button data-k="8">8</button><button data-k="9">9</button>
+      <button class="blank"></button><button data-k="0">0</button><button data-k="del" aria-label="Стереть">⌫</button>
+    </div>
+  </div>
+</section>
+
+<!-- ░ ГЛАВНАЯ ░ -->
+<section class="screen" id="s-home">
+  <div class="top">
+    <div class="logo grow">
+      <svg class="mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect width="64" height="64" rx="18" fill="var(--accent)"/><path d="M32 19c-4-3-9-3.5-12.5-1.2C15.5 20.4 14.5 26 16 33c1.2 5.6 3.4 11 5.6 13.4 1.9 2.1 4 1 4.8-1.6l1.7-5.4c.9-2.8 4.9-2.8 5.8 0l1.7 5.4c.8 2.6 2.9 3.7 4.8 1.6C42.6 44 44.8 38.6 46 33c1.5-7 .5-12.6-3.5-15.2C39 15.5 36 16 32 19z" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/></svg>
+      <span class="wm"><b>Доктор Степанов</b><span>Стоматология</span></span>
+    </div>
+    <button class="avatar" data-go="s-profile" aria-label="Профиль">АТ</button>
+  </div>
+  <div class="body flush">
+    <h2>Здравствуйте, Анна</h2>
+    <p class="lead" style="margin-bottom:14px">Ваш план лечения, визиты и карта зубов — всё в одном месте.</p>
+
+    <div class="stageline" id="stageline"></div>
+    <div id="home-hero" style="margin-top:14px"></div>
+
+    <div class="eyebrow">Карта зубов <button data-go="s-teeth">Открыть</button></div>
+    <button class="card flat" style="width:100%;text-align:left" data-go="s-teeth">
+      <div class="row">
+        <div class="grow">
+          <b style="font-family:var(--font-dsp);font-size:15px">32 зуба на карте</b>
+          <div class="muted" style="font-size:13px;margin-top:2px">2 требуют лечения · 1 имплант · 4 удалены</div>
+        </div>
+        <span class="pill alarm">2 к лечению</span>
+      </div>
+    </button>
+
+    <div class="eyebrow">Разделы</div>
+    <div class="stack" id="home-secs"></div>
+
+    <div id="home-rec"></div>
+
+    <div class="eyebrow">Если болит или что-то случилось</div>
+    <div class="card flat">
+      <p style="margin:0 0 12px;font-size:14px">Острая боль, отёк, выпала пломба или травма зуба — звоните, примем вне очереди. Дежурный врач на связи круглосуточно.</p>
+      <div class="btnrow"><a class="btn sm" href="tel:+74951824016" style="flex:1">Позвонить</a><button class="btn sm ghost" style="flex:1" data-go="s-urgent">Что делать сейчас</button></div>
+      <div class="muted tnum" style="font-size:13px;margin-top:10px;text-align:center">+7 495 182-40-16 · круглосуточно</div>
+    </div>
+
+    <p class="disclaimer"><b>Имеются противопоказания, необходима консультация специалиста.</b> Материалы в приложении носят справочный характер и не заменяют очный приём врача.</p>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ ЭТАП 1 · ОСМОТР ░ -->
+<section class="screen" id="s-visit1">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Осмотр и диагностика</h1></div>
+  <div class="body">
+    <div class="card flat" style="margin-bottom:18px">
+      <div class="row"><span class="ic" style="width:46px;height:46px;border-radius:14px;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></span>
+      <span class="grow"><b>Стоматолог-терапевт</b><div class="muted" style="font-size:13px">Осмотр, КТ и план лечения · 40 минут · 3 500 ₽</div></span></div>
+    </div>
+    <h3>Как пройдёт первый визит</h3>
+    <div class="tl" style="margin-top:12px">
+      <div class="ev now"><div class="t">Анкета до приёма</div><div class="c">Аллергия на анестезию, лекарства, болезни — врач должен знать это до того, как возьмёт шприц</div></div>
+      <div class="ev"><div class="t">Осмотр и КТ</div><div class="c">Компьютерная томограмма показывает каналы, кисты и кость — по одному взгляду в рот этого не видно</div></div>
+      <div class="ev"><div class="t">План лечения и смета</div><div class="c">Что срочно, что планово, что можно отложить — с ценой по каждому пункту</div></div>
+    </div>
+    <div class="card flat" style="margin-top:18px">
+      <b>Боитесь стоматолога?</b>
+      <div class="muted" style="font-size:13.5px;margin-top:4px">Скажите об этом в анкете. Лечим под аппликационной анестезией перед уколом, с седацией или в медикаментозном сне — это нормальная просьба, а не каприз.</div>
+    </div>
+  </div>
+  <div class="footer"><button class="btn" data-go="s-survey">Заполнить анкету</button></div>
+</section>
+
+<!-- ░ АНКЕТА ░ -->
+<section class="screen" id="s-survey">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Анкета до приёма</h1><span class="pill tnum" id="q-count">1 / 3</span></div>
+  <div class="body">
+    <div class="progress"><i id="q-bar" style="width:33%"></i></div>
+
+    <div class="qstep" data-step="1">
+      <h2>Что беспокоит</h2>
+      <p class="lead">Чем точнее опишете, тем меньше времени уйдёт на приёме.</p>
+      <div class="stack">
+        <div class="qcard">
+          <div class="qlabel">Что привело</div>
+          <div class="chips" data-multi>
+            <button class="chip on">Боль в зубе</button><button class="chip">Скол или трещина</button>
+            <button class="chip">Выпала пломба</button><button class="chip on">Кровоточат дёсны</button>
+            <button class="chip">Чувствительность к холодному</button><button class="chip">Запах изо рта</button>
+            <button class="chip">Хочу профгигиену</button><button class="chip">Не нравится эстетика</button>
+          </div>
+        </div>
+        <div class="qcard">
+          <div class="qlabel">Сила боли сейчас</div>
+          <div class="scale" data-single>
+            <button>0</button><button>1</button><button>2</button><button>3</button><button class="on">4</button>
+            <button>5</button><button>6</button><button>7</button><button>8</button><button>9</button>
+          </div>
+          <p class="muted" style="font-size:12.5px;margin:9px 0 0">0 — не болит, 9 — невозможно терпеть. При 7 и выше звоните, примем вне очереди.</p>
+        </div>
+        <div class="qcard">
+          <div class="qlabel">Когда болит</div>
+          <div class="chips" data-single><button class="chip">Постоянно</button><button class="chip on">От холодного и сладкого</button><button class="chip">При накусывании</button><button class="chip">Ночью</button></div>
+        </div>
+        <div class="qcard">
+          <div class="qlabel">Когда были у стоматолога в последний раз</div>
+          <div class="chips" data-single><button class="chip">Меньше полугода назад</button><button class="chip on">Год назад</button><button class="chip">Больше трёх лет</button></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qstep" data-step="2" hidden>
+      <h2>Здоровье и анестезия</h2>
+      <p class="lead">Это влияет на выбор препарата и на то, можно ли лечить сегодня.</p>
+      <div class="stack">
+        <div class="qcard">
+          <div class="qlabel">Аллергия на анестезию или лекарства</div>
+          <input class="ti" id="q-alrg" value="Лидокаин — отёк" placeholder="Например: лидокаин, пенициллин">
+          <p class="muted" style="font-size:12.5px;margin:9px 0 0">Если была реакция на укол у стоматолога — обязательно напишите, какая.</p>
+        </div>
+        <div class="qcard">
+          <div class="qlabel">Постоянные лекарства</div>
+          <input class="ti" id="q-med" value="Нет" placeholder="Особенно разжижающие кровь">
+          <p class="muted" style="font-size:12.5px;margin:9px 0 0">Варфарин, ксарелто, аспирин и бисфосфонаты меняют тактику удаления — предупредите заранее.</p>
+        </div>
+        <div class="qcard">
+          <div class="qlabel">Хронические заболевания</div>
+          <div class="chips" data-multi>
+            <button class="chip">Диабет</button><button class="chip">Гипертония</button><button class="chip">Болезни сердца</button>
+            <button class="chip">Эпилепсия</button><button class="chip">Гепатит, ВИЧ</button><button class="chip on">Ничего из этого</button>
+          </div>
+        </div>
+        <div class="qcard">
+          <div class="qlabel">Беременность или кормление</div>
+          <div class="chips" data-single><button class="chip">Беременность</button><button class="chip">Кормлю</button><button class="chip on">Нет</button></div>
+        </div>
+        <div class="qcard">
+          <div class="qlabel">Как переносите лечение</div>
+          <div class="stack">
+            <button class="opt"><span class="dot"></span><span class="grow">Спокойно, лечусь как обычно</span></button>
+            <button class="opt on"><span class="dot"></span><span class="grow">Волнуюсь, нужен спокойный темп и объяснения</span></button>
+            <button class="opt"><span class="dot"></span><span class="grow">Сильный страх, хочу обсудить седацию</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qstep" data-step="3" hidden>
+      <h2>Что для вас важно</h2>
+      <p class="lead">Отметьте — врач учтёт это, когда будет составлять план.</p>
+      <div class="chips" data-multi>
+        <button class="chip on">Сохранить свои зубы</button><button class="chip">Сделать за меньшее число визитов</button>
+        <button class="chip on">Уложиться в бюджет</button><button class="chip">Эстетика переднего отдела</button>
+        <button class="chip">Лечение без боли любой ценой</button><button class="chip on">Нужна рассрочка</button>
+        <button class="chip">Документы для налогового вычета</button><button class="chip">Приём в выходные</button>
+      </div>
+      <div class="qcard" style="margin-top:14px">
+        <div class="qlabel">Что ещё сказать врачу</div>
+        <textarea class="ti" id="q-own" rows="3" placeholder="Необязательно"></textarea>
+      </div>
+      <div class="qcard" style="margin-top:10px">
+        <div class="qlabel">Снимки с прошлого лечения</div>
+        <button class="btn sm ghost" style="width:100%" data-sheet="sheet-add">Загрузить КТ, снимок или выписку</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><button class="btn" id="q-next">Далее</button></div>
+</section>
+
+<!-- ░ ЗАПИСЬ ░ -->
+<section class="screen" id="s-book">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Запись на осмотр</h1></div>
+  <div class="body">
+    <h3>Что входит</h3>
+    <div class="stack" style="margin-bottom:6px">
+      <button class="opt on"><span class="dot"></span><span class="grow">Осмотр, КТ и план лечения<br><small class="muted">40 минут · 3 500 ₽, зачтём в стоимость лечения</small></span></button>
+      <button class="opt"><span class="dot"></span><span class="grow">Осмотр и профгигиена в один визит<br><small class="muted">90 минут · 11 400 ₽</small></span></button>
+    </div>
+    <div class="eyebrow">Дата</div>
+    <div class="dates" data-single>
+      <button class="date"><span>чт</span><b>30</b><span>окт</span></button>
+      <button class="date"><span>пт</span><b>31</b><span>окт</span></button>
+      <button class="date on"><span>пн</span><b>2</b><span>ноя</span></button>
+      <button class="date"><span>вт</span><b>3</b><span>ноя</span></button>
+      <button class="date"><span>ср</span><b>4</b><span>ноя</span></button>
+      <button class="date"><span>чт</span><b>5</b><span>ноя</span></button>
+    </div>
+    <div class="eyebrow">Время · понедельник, 2 ноября</div>
+    <div class="slots" data-single>
+      <button class="slot">08:30</button><button class="slot off">09:30</button><button class="slot">10:30</button>
+      <button class="slot on">12:00</button><button class="slot off">13:30</button><button class="slot">15:00</button>
+      <button class="slot">16:30</button><button class="slot">18:00</button><button class="slot off">19:30</button>
+    </div>
+    <div class="card flat" style="margin-top:18px">
+      <div class="row"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.7" style="flex:none"><circle cx="12" cy="12" r="9"/><path d="M12 8v5l3 2" stroke-linecap="round"/></svg><span class="muted" style="font-size:13.5px">Поешьте перед приёмом: после анестезии есть нельзя 2 часа</span></div>
+    </div>
+  </div>
+  <div class="footer"><button class="btn" data-go="s-pay">Продолжить · 3 500 ₽</button></div>
+</section>
+
+<!-- ░ ОПЛАТА ░ -->
+<section class="screen" id="s-pay">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Оплата</h1></div>
+  <div class="body">
+    <div class="card" style="margin-bottom:18px">
+      <div class="sum"><span class="muted" id="pay-what">Осмотр, КТ и план лечения</span><span class="tnum" id="pay-sum1">3 500 ₽</span></div>
+      <div class="sum"><span class="muted" id="pay-when">Понедельник, 2 ноября, 12:00</span><span class="muted">40 минут</span></div>
+      <div class="sum"><span>К оплате</span><span class="tnum" id="pay-sum2">3 500 ₽</span></div>
+    </div>
+    <h3>Способ оплаты</h3>
+    <div class="stack">
+      <button class="opt on"><span class="dot"></span><span class="grow">Карта •• 4417<br><small class="muted">Mir, до 09/29</small></span></button>
+      <button class="opt"><span class="dot"></span><span class="grow">СБП<br><small class="muted">Через приложение банка</small></span></button>
+      <button class="opt"><span class="dot"></span><span class="grow">Рассрочка на 6 месяцев<br><small class="muted">Без процентов, по паспорту</small></span></button>
+    </div>
+    <button class="opt on" style="margin-top:18px" data-toggle><span class="check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow" style="font-size:13px">Согласна с условиями оказания услуг и договором оферты</span></button>
+    <p class="muted" style="font-size:12.5px;margin-top:12px">Чек и договор придут в приложение — они понадобятся для налогового вычета.</p>
+  </div>
+  <div class="footer">
+    <button class="btn" data-go="s-paid" id="pay-btn">Оплатить 3 500 ₽</button>
+    <p class="muted" style="font-size:12px;text-align:center;margin:0">Деньги вернутся, если отменить приём не позже чем за сутки.</p>
+  </div>
+</section>
+
+<!-- ░ ОПЛАЧЕНО ░ -->
+<section class="screen" id="s-paid">
+  <div class="body" style="display:flex;flex-direction:column;justify-content:center;text-align:center">
+    <div class="done-ic"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></svg></div>
+    <h2 id="paid-title">Вы записаны</h2>
+    <p class="lead" id="paid-sub">Понедельник, 2 ноября, 12:00 · Мясницкая 24, кабинет 3</p>
+    <div class="card flat" style="text-align:left">
+      <div class="sum"><span class="muted">Оплачено</span><span class="tnum" id="paid-sum">3 500 ₽</span></div>
+      <div class="sum"><span class="muted">Чек и договор</span><span style="color:var(--accent)">В приложении</span></div>
+    </div>
+    <p class="muted" style="font-size:13px;margin-top:16px">Напомним за сутки и за два часа до приёма</p>
+  </div>
+  <div class="footer">
+    <button class="btn" data-go="s-records">Мои записи</button>
+    <button class="btn ghost" data-go="s-home">На главную</button>
+  </div>
+</section>
+
+<!-- ░ ЭТАП 2 · ПЛАН ЛЕЧЕНИЯ ░ -->
+<section class="screen" id="s-plan">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>План лечения</h1></div>
+  <div class="body flush">
+    <div class="sec-head"><h2>План лечения и смета</h2><span class="pill acc" id="plan-state">На согласовании</span></div>
+    <p class="lead">Составлен по осмотру и КТ от 2 ноября. Цены фиксируются на 3 месяца, порядок можно менять.</p>
+
+    <div class="eyebrow">Срочно · откладывать нельзя</div>
+    <div class="stack">
+      <div class="est"><span class="grow"><b>Зуб 24 · лечение каналов</b><small>Пульпит, два канала, под микроскопом. Два визита.</small></span><span class="price">18 500 ₽</span></div>
+      <div class="est"><span class="grow"><b>Зуб 36 · лечение кариеса</b><small>Средний кариес, пломба из композита. Один визит.</small></span><span class="price">9 800 ₽</span></div>
+    </div>
+
+    <div class="eyebrow">Планово · в ближайшие месяцы</div>
+    <div class="stack">
+      <div class="est"><span class="grow"><b>Зуб 26 · коронка</b><small>Зуб уже без нерва, стенки тонкие — без коронки расколется. Керамика E-max.</small></span><span class="price">32 000 ₽</span></div>
+      <div class="est"><span class="grow"><b>Профгигиена</b><small>Ультразвук, Air Flow, полировка. Причина кровоточивости дёсен — камень.</small></span><span class="price">7 900 ₽</span></div>
+    </div>
+
+    <div class="eyebrow">Можно отложить · обсудим позже</div>
+    <div class="stack">
+      <div class="est" style="opacity:.75"><span class="grow"><b>Зуб 46 · коронка на имплант</b><small>Имплант установлен в мае, прижился. Коронку можно ставить сейчас или позже.</small></span><span class="price">41 000 ₽</span></div>
+    </div>
+
+    <div class="total"><span>Итого по плану</span><b class="tnum">109 200 ₽</b></div>
+    <p class="muted" style="font-size:12.5px;margin-top:8px">Срочная часть — 28 300 ₽. Можно оплачивать по визитам или оформить рассрочку на 6 месяцев без процентов.</p>
+
+    <div class="eyebrow">Варианты, которые стоит обсудить</div>
+    <div class="acc open"><button data-acc>Зуб 24: лечить канал или удалять<span class="chev">⌄</span></button><div class="in">Лечение с коронкой — 50 500 ₽, зуб служит 10–15 лет. Удаление с имплантом — 89 000 ₽ и полгода на приживление. Свой зуб почти всегда лучше, пока его можно спасти.</div></div>
+    <div class="acc"><button data-acc>Пломба или вкладка на 36<span class="chev">⌄</span></button><div class="in">Пломба — 9 800 ₽, служит 5–7 лет. Керамическая вкладка — 24 000 ₽, служит дольше и лучше держит форму при большом разрушении. При вашем объёме разрушения достаточно пломбы.</div></div>
+
+    <div class="eyebrow">Документы</div>
+    <div class="stack">
+      <button class="item" data-toast="Откроется PDF с планом лечения"><span class="ic">PDF</span><span class="grow"><b>План лечения и смета</b><small class="tnum">2 ноября · 3 страницы</small></span><span class="muted">›</span></button>
+      <button class="item" data-toast="Откроется снимок КТ"><span class="ic">КТ</span><span class="grow"><b>Компьютерная томограмма</b><small class="tnum">2 ноября</small></span><span class="muted">›</span></button>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="btn" id="plan-ok">Согласовать план и оплатить первый визит</button>
+    <button class="btn line" data-toast="Врач перезвонит и разберёт план по пунктам">Обсудить с врачом</button>
+  </div>
+</section>
+
+<!-- ░ ЭТАП 3 · ЛЕЧЕНИЕ ░ -->
+<section class="screen" id="s-course">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Лечение</h1></div>
+  <div class="body flush">
+    <div class="sec-head"><h2>Лечение по визитам</h2><span class="pill warn tnum" id="course-count">0 / 5</span></div>
+    <p class="lead">Отмечайте пройденные визиты. Порядок можно менять — скажите врачу, если нужно иначе.</p>
+
+    <div class="ringcard">
+      <div class="ring">
+        <svg width="74" height="74" viewBox="0 0 74 74"><circle cx="37" cy="37" r="31" fill="none" stroke="var(--line)" stroke-width="7"/><circle id="ring-arc" cx="37" cy="37" r="31" fill="none" stroke="var(--accent)" stroke-width="7" stroke-linecap="round" stroke-dasharray="194.8" stroke-dashoffset="194.8"/></svg>
+        <span id="ring-pct">0%</span>
+      </div>
+      <div class="grp">
+        <span class="pill">Срочное 0/3</span><span class="pill">Плановое 0/2</span><span class="pill acc tnum">Осталось 109 200 ₽</span>
+      </div>
+    </div>
+
+    <div class="eyebrow">Визиты</div>
+    <div class="stack" data-count="course">
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>9 ноября, 12:00 · Зуб 24, первый этап каналов</b><small>90 минут. Чистка и пломбировка каналов, временная пломба. После визита 2 часа не есть.<span class="term">11 000 ₽</span></small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>16 ноября, 12:00 · Зуб 24, постоянная пломба</b><small>60 минут. Контрольный снимок и постоянная реставрация.<span class="term">7 500 ₽</span></small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>16 ноября, 13:10 · Зуб 36, кариес</b><small>50 минут, в тот же день. Пломба из композита.<span class="term">9 800 ₽</span></small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>24 ноября, 10:00 · Профгигиена</b><small>60 минут. Ультразвук, Air Flow, полировка. После — 3 дня без кофе, вина и красящего.<span class="term">7 900 ₽</span></small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>8 декабря, 11:00 · Зуб 26, коронка</b><small>Два визита: примерка и фиксация. Между ними — временная коронка.<span class="term">32 000 ₽</span></small></span></button>
+    </div>
+
+    <div class="eyebrow">Перед каждым визитом</div>
+    <div class="acc open"><button data-acc>Что сделать<span class="chev">⌄</span></button><div class="in"><ul>
+      <li>Поешьте за час до приёма — после анестезии нельзя есть 2 часа.</li>
+      <li>Почистите зубы перед выходом.</li>
+      <li>Не пейте алкоголь накануне: анестезия действует хуже.</li>
+      <li>Если принимали обезболивающее — скажите врачу, какое и когда.</li>
+      <li>Заболели, температура, герпес на губе — перенесите визит.</li>
+    </ul></div></div>
+    <div class="acc"><button data-acc>Сколько держится анестезия<span class="chev">⌄</span></button><div class="in">2–4 часа. Пока губа и язык онемевшие, легко прикусить щёку и не заметить — поэтому не есть. Пить тёплое можно сразу, горячее — после того как чувствительность вернётся.</div></div>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ ЭТАП 4 · ПОСЛЕ ПРИЁМА ░ -->
+<section class="screen" id="s-after">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>После приёма</h1></div>
+  <div class="body flush">
+    <div class="sec-head"><h2>После приёма</h2><span class="pill tnum" id="after-count">0 / 6</span></div>
+    <p class="lead">Короткая памятка на сегодня. Отмечайте по мере выполнения.</p>
+
+    <div class="stack" data-count="after">
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>Не есть 2 часа</b><small>Пока не отойдёт анестезия — можно прикусить щёку и не почувствовать</small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>Сутки не жевать на пролеченной стороне</b><small>Композит набирает прочность, но дайте ему день</small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>Если ноет — обезболивающее</b><small>Ибупрофен по инструкции. Ноющая боль день-два после каналов — нормально</small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>Чистить зубы как обычно</b><small>Мягкой щёткой, аккуратно у пролеченного зуба. Пропускать чистку нельзя</small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>3 дня без красящего</b><small>Кофе, чай, вино, свёкла, куркума — после пломбы и гигиены</small></span></button>
+      <button class="chk"><span class="box"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span><span class="grow"><b>Проверить прикус</b><small>Если пломба мешает смыкать зубы — не терпеть, прийти на коррекцию, это 10 минут</small></span></button>
+    </div>
+    <button class="btn ok" style="margin-top:12px" id="after-done">✓ Этап пройден</button>
+
+    <div class="eyebrow">Отдельные памятки</div>
+    <div class="acc open"><button data-acc>После удаления зуба<span class="chev">⌄</span></button><div class="in"><ul>
+      <li>Прикусить марлю 20–30 минут и выплюнуть. Кровянистая слюна первые часы — нормально.</li>
+      <li>Сутки не полоскать рот: вымоете сгусток, а без него будет альвеолит — это больно и долго.</li>
+      <li>Не греть, не ходить в баню, не пить алкоголь, не курить сутки.</li>
+      <li>Холод снаружи: 10 минут через ткань, перерыв 10 минут, первые 3–4 часа.</li>
+      <li>Есть можно через 2–3 часа, мягкое и тёплое, на другой стороне.</li>
+      <li>Со вторых суток — ванночки с хлоргексидином: набрать, подержать, аккуратно выпустить.</li>
+    </ul></div></div>
+    <div class="acc"><button data-acc>После лечения каналов<span class="chev">⌄</span></button><div class="in">Ноющая боль и реакция на накусывание 2–3 дня — обычное дело, зуб был воспалён. С временной пломбой не жевать твёрдое. Если боль усиливается к третьему дню или появился отёк — звоните.</div></div>
+    <div class="acc"><button data-acc>После установки импланта<span class="chev">⌄</span></button><div class="in">Холод первые часы, антибиотик по схеме врача, никакого спорта и бани 5 дней, спать на высокой подушке. Швы снимают через 7–10 дней. Отёк нарастает до третьих суток, потом спадает — это нормально.</div></div>
+    <div class="acc"><button data-acc>После профгигиены<span class="chev">⌄</span></button><div class="in">Дёсны могут кровить и ныть день-два, зубы — реагировать на холодное до недели. Пользуйтесь пастой для чувствительных зубов. Три дня не ешьте красящее — эмаль после полировки впитывает пигмент активнее.</div></div>
+
+    <div class="eyebrow">Гарантия</div>
+    <div class="card flat">
+      <div class="sum"><span class="muted">Пломбы</span><span>2 года</span></div>
+      <div class="sum"><span class="muted">Лечение каналов</span><span>3 года</span></div>
+      <div class="sum"><span class="muted">Коронки и импланты</span><span>5 лет</span></div>
+      <p class="muted" style="font-size:12.5px;margin:12px 0 0">Гарантия действует при профгигиене раз в полгода — это условие, а не формальность: без неё не видно, что происходит под коронкой.</p>
+    </div>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ ЭТАП 5 · ПРОФИЛАКТИКА ░ -->
+<section class="screen" id="s-care">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Профилактика</h1></div>
+  <div class="body flush">
+    <div class="hero">
+      <div class="lbl">Следующий визит</div>
+      <div class="big">8 июня, 11:00</div>
+      <div class="sub">Профгигиена и осмотр · раз в 6 месяцев</div>
+    </div>
+    <p class="muted" style="font-size:13px;margin-top:10px">Напомним за неделю и за день. Перенести можно в один тап.</p>
+    <button class="btn line" style="margin-top:10px" data-go="s-move">Перенести визит</button>
+
+    <div class="eyebrow">Домашний уход</div>
+    <div class="acc open"><button data-acc>Каждый день<span class="chev">⌄</span></button><div class="in"><ul>
+      <li>Щётка — 2 раза в день по 2 минуты, мягкая или средняя, менять раз в 3 месяца.</li>
+      <li>Нить или ёршики — раз в день. Щётка не достаёт между зубами, а кариес начинается именно там.</li>
+      <li>Ирригатор — дополнение к нити, а не замена.</li>
+      <li>Паста с фтором 1450 ppm. После чистки сплюнуть, но не полоскать водой.</li>
+      <li>Скребок для языка — заодно решает вопрос запаха.</li>
+    </ul></div></div>
+    <div class="acc"><button data-acc>Чего не делать<span class="chev">⌄</span></button><div class="in">Не чистить сразу после кислого и газировки — эмаль размягчена, подождите полчаса. Не давить на щётку: стираются шейки зубов. Не грызть орехи и лёд, не открывать зубами бутылки — самые обидные сколы именно отсюда.</div></div>
+    <div class="acc"><button data-acc>Что считать тревожным<span class="chev">⌄</span></button><div class="in">Кровь при чистке чаще раза в неделю, запах изо рта, реакция на холодное дольше 10 секунд, застревает нить между одними и теми же зубами, зуб потемнел. Любое из этого — повод прийти, не дожидаясь полугода.</div></div>
+
+    <div class="eyebrow">График наблюдения</div>
+    <div class="tl">
+      <div class="ev done"><div class="t">8 июня · Профгигиена и осмотр</div><div class="c">Раз в 6 месяцев. Контроль пломб, дёсен и импланта.</div></div>
+      <div class="ev"><div class="t">8 декабря · Профгигиена и осмотр</div><div class="c">Плюс прицельный снимок зуба 24 — проверим, как ведут себя каналы.</div></div>
+      <div class="ev"><div class="t">Через год · Контрольная КТ</div><div class="c">Общая картина и состояние кости вокруг импланта.</div></div>
+    </div>
+
+    <div class="eyebrow">Документы</div>
+    <div class="stack">
+      <button class="item" data-toast="Справка готовится 3 рабочих дня"><span class="ic">₽</span><span class="grow"><b>Справка для налогового вычета</b><small>Вернуть 13% от суммы лечения</small></span><span class="muted">›</span></button>
+      <button class="item" data-go="s-docs"><span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h8l4 4v14H6z"/></svg></span><span class="grow"><b>Все документы</b><small>Снимки, план, договор, чеки, гарантийные талоны</small></span><span class="muted">›</span></button>
+    </div>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ КАРТА ЗУБОВ ░ -->
+<section class="screen" id="s-teeth">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Карта зубов</h1></div>
+  <div class="body flush">
+    <p class="lead">Тапните по зубу — покажем, что с ним делали и что планируется.</p>
+    <div class="teeth">
+      <div class="jaw" id="jaw-up"></div>
+      <div class="jaw" id="jaw-low"></div>
+      <div class="legend">
+        <span><i style="background:var(--surface)"></i>здоров</span>
+        <span><i style="background:var(--accent-soft);border-color:var(--accent)"></i>пломба</span>
+        <span><i style="background:var(--warn-soft);border-color:var(--warn)"></i>коронка, каналы</span>
+        <span><i style="background:var(--ok-soft);border-color:var(--ok)"></i>имплант</span>
+        <span><i style="background:var(--alarm-soft);border-color:var(--alarm)"></i>нужно лечить</span>
+        <span><i style="border-style:dashed"></i>удалён</span>
+      </div>
+    </div>
+    <div class="card" id="tooth-info" style="margin-top:14px">
+      <b style="font-family:var(--font-dsp);font-size:15px">Выберите зуб</b>
+      <div class="muted" style="font-size:13.5px;margin-top:4px">Нумерация международная: первая цифра — четверть челюсти, вторая — номер зуба от центра.</div>
+    </div>
+    <div class="eyebrow">Что требует внимания</div>
+    <div class="stack">
+      <button class="item" data-tooth="24"><span class="ic" style="background:var(--alarm-soft);color:var(--alarm)">24</span><span class="grow"><b>Пульпит, нужны каналы</b><small>Срочно · 18 500 ₽ · два визита</small></span><span class="muted">›</span></button>
+      <button class="item" data-tooth="36"><span class="ic" style="background:var(--alarm-soft);color:var(--alarm)">36</span><span class="grow"><b>Средний кариес</b><small>Срочно · 9 800 ₽ · один визит</small></span><span class="muted">›</span></button>
+      <button class="item" data-tooth="26"><span class="ic" style="background:var(--warn-soft);color:var(--warn)">26</span><span class="grow"><b>Без нерва, нужна коронка</b><small>Планово · 32 000 ₽</small></span><span class="muted">›</span></button>
+    </div>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ СРОЧНО ░ -->
+<section class="screen" id="s-urgent">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Срочно</h1></div>
+  <div class="body flush">
+    <div class="alarm-card">
+      <h3>Когда звонить не раздумывая</h3>
+      <p style="margin:0 0 12px;font-size:14px;color:var(--alarm)">Лучше позвонить и спросить, чем терпеть. При любом из признаков:</p>
+      <div class="stack" style="gap:8px">
+        <div class="sign"><span>▲</span>Кровотечение из лунки не останавливается больше 30 минут</div>
+        <div class="sign"><span>▲</span>Отёк щеки нарастает после третьих суток или мешает открывать рот</div>
+        <div class="sign"><span>▲</span>Температура 38 °C и выше после лечения</div>
+        <div class="sign"><span>▲</span>Боль усиливается к третьему-четвёртому дню после удаления — похоже на альвеолит</div>
+        <div class="sign"><span>▲</span>Отёк распространяется на глаз, шею или под челюсть, трудно глотать — вызывайте скорую, 103</div>
+        <div class="sign"><span>▲</span>Выбит или сломан зуб после травмы — у вас есть час, чтобы его спасти</div>
+      </div>
+      <div class="telbox">
+        <b>+7 495 182-40-16</b>
+        <a class="btn alarm" href="tel:+74951824016">Позвонить дежурному врачу</a>
+        <button class="btn line sm" style="width:100%;margin-top:8px" data-copy="+74951824016">Скопировать номер</button>
+      </div>
+      <p class="muted" style="font-size:12.5px;margin:10px 0 0">Круглосуточно. Острая боль — приём вне очереди в день обращения.</p>
+    </div>
+
+    <div class="eyebrow">Что делать прямо сейчас</div>
+    <div class="acc open"><button data-acc>Острая боль<span class="chev">⌄</span></button><div class="in">Выпейте ибупрофен по инструкции. Не грейте — от тепла воспаление растёт. Не кладите таблетку на зуб: будет ожог десны. Спите на высокой подушке, в горизонтальном положении боль сильнее.</div></div>
+    <div class="acc"><button data-acc>Выпала пломба или коронка<span class="chev">⌄</span></button><div class="in">Коронку сохраните и возьмите с собой — часто можно зафиксировать обратно. Не приклеивайте ничем сами. Жуйте на другой стороне, чистите это место аккуратно и запишитесь в ближайшие дни.</div></div>
+    <div class="acc"><button data-acc>Выбит зуб<span class="chev">⌄</span></button><div class="in">Берите только за коронку, не за корень. Не трите и не чистите. Положите в молоко, физраствор или за щёку и приезжайте в течение часа — тогда зуб можно вернуть на место.</div></div>
+    <div class="acc"><button data-acc>Флюс, отёк щеки<span class="chev">⌄</span></button><div class="in">Никакого тепла и компрессов. Холод снаружи по 10 минут. Антибиотик сам себе не назначайте. Это не «пройдёт само» — звоните сегодня.</div></div>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ ЗАПИСИ ░ -->
+<section class="screen" id="s-records">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Мои записи</h1></div>
+  <div class="body flush">
+    <div id="rec-empty" hidden>
+      <div class="card flat" style="text-align:center;padding:26px 18px">
+        <b style="display:block;font-family:var(--font-dsp);font-size:16px;margin-bottom:6px">Записей пока нет</b>
+        <p class="muted" style="font-size:13.5px;margin:0 0 14px">Начните с осмотра: анкета, выбор времени, оплата приёма.</p>
+        <button class="btn sm" style="width:100%" data-go="s-visit1">Записаться на осмотр</button>
+      </div>
+    </div>
+    <div id="rec-upcoming" hidden>
+      <div class="eyebrow" style="margin-top:4px">Предстоящая</div>
+      <div class="card">
+        <div class="row" style="margin-bottom:10px"><div class="grow"><b id="rec-title">Осмотр, КТ и план лечения</b><div class="muted tnum" style="font-size:13px" id="rec-when">2 ноября, понедельник · 12:00</div></div><span class="pill acc">Оплачено</span></div>
+        <div class="muted" style="font-size:13px;margin-bottom:12px">Мясницкая 24, кабинет 3 · 40 минут · стоматолог-терапевт</div>
+        <div class="btnrow"><button class="btn sm ghost" style="flex:1" data-go="s-move">Перенести</button><button class="btn sm line" style="flex:1" data-toast="Чтобы отменить приём, позвоните администратору">Отменить</button></div>
+      </div>
+    </div>
+    <div id="rec-course" hidden>
+      <div class="eyebrow">По плану лечения</div>
+      <div class="stack">
+        <div class="item"><span class="ic">24</span><span class="grow"><b>Каналы, первый этап</b><small class="tnum">9 ноября · 12:00</small></span><span class="pill acc">Оплачено</span></div>
+        <div class="item"><span class="ic">24</span><span class="grow"><b>Постоянная пломба</b><small class="tnum">16 ноября · 12:00</small></span><span class="pill warn">Ждёт оплаты</span></div>
+        <div class="item"><span class="ic">36</span><span class="grow"><b>Лечение кариеса</b><small class="tnum">16 ноября · 13:10</small></span><span class="pill warn">Ждёт оплаты</span></div>
+      </div>
+    </div>
+    <div id="rec-past" hidden>
+      <div class="eyebrow">Прошедшие</div>
+      <div class="stack">
+        <div class="item"><span class="ic" style="color:var(--muted)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 12.5l5 5L20 6.5"/></svg></span><span class="grow"><b>Осмотр, КТ и план лечения</b><small class="tnum">2 ноября · 12:00</small></span><span class="pill">Завершена</span></div>
+      </div>
+    </div>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ ПЕРЕНОС ░ -->
+<section class="screen" id="s-move">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Перенести визит</h1></div>
+  <div class="body">
+    <div class="card flat" style="margin-bottom:6px">
+      <div class="muted" style="font-size:12px">Сейчас</div>
+      <b class="tnum" id="move-now">Осмотр, КТ и план лечения · 2 ноября, 12:00</b>
+    </div>
+    <div class="eyebrow">Новая дата</div>
+    <div class="dates" data-single id="move-dates">
+      <button class="date" data-d="3 ноября, вторник"><span>вт</span><b>3</b><span>ноя</span></button>
+      <button class="date on" data-d="4 ноября, среда"><span>ср</span><b>4</b><span>ноя</span></button>
+      <button class="date" data-d="5 ноября, четверг"><span>чт</span><b>5</b><span>ноя</span></button>
+      <button class="date" data-d="6 ноября, пятница"><span>пт</span><b>6</b><span>ноя</span></button>
+      <button class="date" data-d="9 ноября, понедельник"><span>пн</span><b>9</b><span>ноя</span></button>
+    </div>
+    <div class="eyebrow">Свободное время</div>
+    <div class="slots" data-single id="move-slots">
+      <button class="slot">08:30</button><button class="slot on">10:00</button><button class="slot off">11:30</button>
+      <button class="slot">13:00</button><button class="slot">16:00</button><button class="slot off">18:30</button>
+    </div>
+    <p class="muted" style="font-size:13px;margin-top:18px">Перенести можно не позже чем за сутки. Оплата сохраняется, доплачивать ничего не нужно.</p>
+  </div>
+  <div class="footer"><button class="btn" id="move-ok">Перенести</button></div>
+</section>
+
+<!-- ░ ДОКУМЕНТЫ ░ -->
+<section class="screen" id="s-docs">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Документы</h1></div>
+  <div class="body flush">
+    <p class="lead">Снимки, планы, договоры и чеки. Чеки понадобятся для налогового вычета — храним их за три года.</p>
+    <div class="stack" id="docs-mine">
+      <div class="item"><span class="ic">КТ</span><span class="grow"><b>Компьютерная томограмма</b><small class="tnum">2 ноября · DICOM и PDF</small></span><span class="pill acc">Смотреть</span></div>
+      <div class="item"><span class="ic">PDF</span><span class="grow"><b>План лечения и смета</b><small class="tnum">2 ноября · 109 200 ₽</small></span><span class="pill acc">Смотреть</span></div>
+      <div class="item"><span class="ic">PDF</span><span class="grow"><b>Договор на лечение</b><small class="tnum">2 ноября · подписан</small></span><span class="pill ok">Подписан</span></div>
+      <div class="item"><span class="ic">₽</span><span class="grow"><b>Чек · осмотр и КТ</b><small class="tnum">2 ноября · 3 500 ₽</small></span><span class="pill">Чек</span></div>
+      <div class="item"><span class="ic">✓</span><span class="grow"><b>Гарантийный талон · имплант 46</b><small class="tnum">Май 2026 · гарантия 5 лет</small></span><span class="pill ok">Действует</span></div>
+    </div>
+    <button class="btn line" style="margin-top:14px" data-sheet="sheet-add">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Добавить свой документ</button>
+    <p class="muted" style="font-size:12.5px;margin-top:12px">Снимки и выписки из других клиник помогут не делать лишнюю диагностику заново.</p>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ FAQ ░ -->
+<section class="screen" id="s-faq">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Частые вопросы</h1></div>
+  <div class="body">
+    <div class="acc open"><button data-acc>Будет ли больно?<span class="chev">⌄</span></button><div class="in">Само лечение — нет, работает анестезия. Неприятен обычно только укол, и его можно обезболить гелем заранее — попросите. Если во время лечения почувствовали боль, поднимите руку: врач добавит анестетик, терпеть не нужно.</div></div>
+    <div class="acc"><button data-acc>Почему нельзя просто вылечить, без КТ?<span class="chev">⌄</span></button><div class="in">На глаз не видно, что под пломбой, сколько каналов у зуба и что с костью. Половина переделок случается как раз потому, что лечили вслепую.</div></div>
+    <div class="acc"><button data-acc>Можно ли лечить зубы при беременности?<span class="chev">⌄</span></button><div class="in">Да, и нужно. Оптимально во втором триместре. Анестезия без адреналина разрешена, снимок делают с защитным фартуком. Нелеченый зуб опаснее для ребёнка, чем лечение.</div></div>
+    <div class="acc"><button data-acc>Сколько держится пломба и коронка?<span class="chev">⌄</span></button><div class="in">Пломба — 5–7 лет, керамическая вкладка и коронка — 10–15, имплант при хорошей гигиене служит десятилетиями. Срок сильно зависит от гигиены и от того, не грызёте ли вы твёрдое.</div></div>
+    <div class="acc"><button data-acc>Болит после пломбы — это нормально?<span class="chev">⌄</span></button><div class="in">Небольшая чувствительность к холодному и при накусывании до двух недель — да. Если боль резкая, мешает спать или пломба ощущается выше остальных зубов — приходите на коррекцию прикуса, это быстро и бесплатно.</div></div>
+    <div class="acc"><button data-acc>Что с рассрочкой и вычетом?<span class="chev">⌄</span></button><div class="in">Рассрочка на 6 месяцев без процентов оформляется в клинике по паспорту. По итогам года выдаём справку для налоговой: вернуть можно 13% от суммы лечения, а по дорогостоящему — имплантации — без ограничения по сумме.</div></div>
+    <div class="acc"><button data-acc>С какого возраста лечить детей?<span class="chev">⌄</span></button><div class="in">Первый визит — к году, дальше раз в полгода. Молочные зубы лечат обязательно: инфекция от них переходит на зачатки постоянных.</div></div>
+    <div class="card flat" style="margin-top:18px">
+      <b>Не нашли ответ?</b>
+      <div class="muted" style="font-size:13.5px;margin:4px 0 12px">Администратор отвечает с 8:00 до 21:00</div>
+      <button class="btn sm ghost" style="width:100%" data-toast="Администратор ответит в течение 15 минут">Написать в клинику</button>
+    </div>
+  </div>
+</section>
+
+<!-- ░ ПРОФИЛЬ ░ -->
+<section class="screen" id="s-profile">
+  <div class="top sep"><button class="back" data-back aria-label="Назад"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button><h1>Профиль</h1></div>
+  <div class="body flush">
+    <div class="card" style="text-align:center;margin-bottom:4px">
+      <div class="avatar" style="width:62px;height:62px;font-size:20px;margin:4px auto 10px">АТ</div>
+      <b style="font-size:17px;font-family:var(--font-dsp)">Анна Тест</b>
+      <div class="muted tnum" style="font-size:13.5px">+7 999 148 22 07</div>
+    </div>
+    <div class="eyebrow">Оформление</div>
+    <div class="stack">
+      <button class="item" data-theme-set="light"><span class="grow"><b>Светлая</b></span><span class="check" id="th-light"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span></button>
+      <button class="item" data-theme-set="dark"><span class="grow"><b>Тёмная</b></span><span class="check" id="th-dark"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span></button>
+      <button class="item" data-theme-set="system"><span class="grow"><b>Как в системе</b></span><span class="check" id="th-system"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></span></button>
+    </div>
+    <div class="eyebrow">Ещё</div>
+    <div class="stack">
+      <button class="item" data-go="s-docs"><span class="grow"><b>Документы</b><small>Снимки, план, договор, чеки, гарантия</small></span><span class="muted">›</span></button>
+      <button class="item" data-go="s-faq"><span class="grow"><b>Частые вопросы</b><small>Боль, беременность, рассрочка, вычет</small></span><span class="muted">›</span></button>
+      <button class="item" data-toast="Раздел в разработке"><span class="grow"><b>Члены семьи</b><small>Добавить ребёнка или родителя в кабинет</small></span><span class="muted">›</span></button>
+      <button class="item" data-toast="Раздел в разработке"><span class="grow"><b>Напоминания</b><small>О визитах и профгигиене раз в полгода</small></span><span class="muted">›</span></button>
+      <button class="item" id="demo-reset"><span class="grow"><b>Пройти путь заново</b><small>Сбросить прогресс прототипа к первому этапу</small></span><span class="muted">↺</span></button>
+      <button class="item" data-go="s-phone"><span class="grow"><b style="color:var(--alarm)">Выйти</b></span></button>
+    </div>
+  </div>
+  <nav class="tabs" data-tabs></nav>
+</section>
+
+<!-- ░ ЛИСТ ░ -->
+<div class="sheet" id="sheet-add">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <div class="puller"></div>
+    <h3 style="margin-bottom:12px">Добавить файл</h3>
+    <div class="stack">
+      <button class="item" data-add="Снимок из другой клиники"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="14" rx="3"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></span><span class="grow"><b>Сфотографировать</b><small>Снимок или выписку</small></span></button>
+      <button class="item" data-add="КТ из другой клиники"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/></svg></span><span class="grow"><b>Выбрать файл</b><small>PDF, JPG, DICOM до 200 МБ</small></span></button>
+      <button class="item" data-add="Выписка из ЕМИАС"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="grow"><b>Из истории болезни</b><small>Подтянуть из государственной системы</small></span></button>
+    </div>
+    <button class="btn ghost" style="margin-top:12px" data-close>Отмена</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement, stack=[], cur='s-phone';
+
+  function applyTheme(t){
+    if(t==='system'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',t)}
+    ['light','dark','system'].forEach(function(k){
+      var el=document.getElementById('th-'+k); if(el) el.parentElement.classList.toggle('on',k===t);
+    });
+    try{localStorage.setItem('dt-theme',t)}catch(e){}
+  }
+  var saved='system'; try{saved=localStorage.getItem('dt-theme')||'system'}catch(e){}
+  applyTheme(saved);
+
+  /* ── путь: осмотр → план → лечение → после → профилактика ── */
+  var S={stage:1,paid:false,planOk:false,when:'2 ноября, понедельник · 12:00'};
+  try{var raw=localStorage.getItem('dt-path'); if(raw) S=JSON.parse(raw)}catch(e){}
+  function save(){try{localStorage.setItem('dt-path',JSON.stringify(S))}catch(e){}}
+  var GATE={'s-plan':2,'s-course':3,'s-after':4,'s-care':5};
+  var LOCK={2:'План появится после осмотра и КТ',
+            3:'Сначала согласуйте план лечения и оплатите первый визит',
+            4:'Памятка откроется, когда начнётся лечение',
+            5:'Профилактика откроется, когда лечение будет завершено'};
+  var LOCKICO='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+  function cDone(){return document.querySelectorAll('[data-count="course"] .chk.on').length}
+  function cAll(){return document.querySelectorAll('[data-count="course"] .chk').length}
+
+  function render(){
+    var st=[
+      {n:1,t:'Осмотр и КТ',go:'s-visit1',sub:S.stage>1?'пройден':'анкета, время, оплата'},
+      {n:2,t:'План лечения',go:'s-plan',sub:S.stage<2?'после осмотра':(S.planOk?'согласован':'на согласовании')},
+      {n:3,t:'Лечение',go:'s-course',sub:S.stage<3?'после согласования':cDone()+' из '+cAll()+' визитов'},
+      {n:4,t:'После приёма',go:'s-after',sub:S.stage<4?'во время лечения':'памятки и гарантия'},
+      {n:5,t:'Профилактика',go:'s-care',sub:S.stage<5?'после лечения':'раз в 6 месяцев'}
+    ];
+    var line=document.getElementById('stageline');
+    if(line) line.innerHTML=st.map(function(s){
+      var cls=s.n<S.stage?'done':(s.n===S.stage?'now':'lock');
+      var num=s.n<S.stage?'✓':(s.n>S.stage?LOCKICO:s.n);
+      return '<button class="stagecard '+cls+'" data-go="'+s.go+'"><span class="num">'+num+'</span><b>'+s.t+'</b><small>'+s.sub+'</small></button>';
+    }).join('');
+
+    var hero=document.getElementById('home-hero');
+    if(hero){
+      if(S.stage===1){
+        hero.innerHTML='<button class="hero" data-go="s-visit1"><div class="lbl">Шаг 1 из 5</div><div class="big">Начните с осмотра</div><div class="sub">Анкета → время → оплата. После приёма появится план лечения со сметой.</div></button>';
+      }else if(S.stage===2){
+        hero.innerHTML='<button class="hero" data-go="s-plan"><div class="lbl">Готов план лечения</div><div class="big tnum">109 200 ₽</div><div class="sub">5 визитов · срочная часть 28 300 ₽ · посмотрите и согласуйте</div></button>';
+      }else if(S.stage===3){
+        hero.innerHTML='<button class="hero" data-go="s-course"><div class="lbl">Ближайший визит</div><div class="big">9 ноября, 12:00</div><div class="sub">Зуб 24, первый этап каналов · 90 минут</div></button>';
+      }else if(S.stage===4){
+        hero.innerHTML='<button class="hero" data-go="s-after"><div class="lbl">Сегодня после приёма</div><div class="big">Памятка на сутки</div><div class="sub">Не есть 2 часа, не жевать на этой стороне, проверить прикус</div></button>';
+      }else{
+        hero.innerHTML='<button class="hero" data-go="s-care"><div class="lbl">Следующий визит</div><div class="big">8 июня, 11:00</div><div class="sub">Профгигиена и осмотр · раз в 6 месяцев</div></button>';
+      }
+    }
+
+    var secs=[
+      {go:'s-visit1',t:'Осмотр и диагностика',d:'Анкета до приёма, осмотр, КТ и первый разговор о плане.',need:1,
+       pill:S.stage>1?'<span class="pill ok">Пройдено</span>':'<span class="pill acc">Шаг 1</span>'},
+      {go:'s-plan',t:'План лечения и смета',d:'Что срочно, что планово, что можно отложить — с ценой по каждому пункту.',need:2,
+       pill:S.planOk?'<span class="pill ok">Согласован</span>':'<span class="pill warn">На согласовании</span>'},
+      {go:'s-course',t:'Лечение по визитам',d:'График приёмов с длительностью, ценой и тем, что будет на каждом.',need:3,
+       pill:'<span class="pill '+(cAll()&&cDone()===cAll()?'ok':'warn')+' tnum">'+cDone()+' / '+cAll()+'</span>'},
+      {go:'s-after',t:'После приёма',d:'Памятки по анестезии, удалению, каналам и имплантам. Гарантия на работы.',need:4,
+       pill:'<span class="pill tnum">'+document.querySelectorAll('[data-count="after"] .chk.on').length+' / 6</span>'},
+      {go:'s-care',t:'Профилактика и уход',d:'Гигиена раз в полгода, домашний уход, справка для налогового вычета.',need:5,
+       pill:'<span class="pill">раз в 6 мес.</span>'}
+    ];
+    var box=document.getElementById('home-secs');
+    if(box) box.innerHTML=secs.map(function(s){
+      var locked=s.need>S.stage;
+      return '<button class="secrow'+(locked?' lock':'')+'" data-go="'+s.go+'"><span class="grow"><b>'+s.t+'</b><small>'+s.d+'</small></span>'+
+        (locked?'<span class="pill">'+LOCKICO+'</span>':s.pill)+'</button>';
+    }).join('');
+
+    var rec=document.getElementById('home-rec');
+    if(rec){
+      rec.innerHTML=(S.paid&&S.stage<3)
+        ? '<div class="eyebrow">Моя запись <button data-go="s-records">Все</button></div>'+
+          '<div class="card"><div class="row" style="margin-bottom:10px"><div class="grow"><b>Осмотр, КТ и план лечения</b>'+
+          '<div class="muted tnum" style="font-size:13px">'+S.when+'</div></div><span class="pill acc">Оплачено</span></div>'+
+          '<div class="muted" style="font-size:13px;margin-bottom:12px">Мясницкая 24, кабинет 3 · 40 минут</div>'+
+          '<div class="btnrow"><button class="btn sm ghost" style="flex:1" data-go="s-move">Перенести</button>'+
+          '<button class="btn sm line" style="flex:1" data-toast="Чтобы отменить приём, позвоните администратору">Отменить</button></div></div>'
+        : (S.paid ? '<div class="eyebrow">Записи</div><button class="btn line" data-go="s-records">Все мои визиты</button>'
+                  : '<div class="eyebrow">Запись</div><button class="btn line" data-go="s-visit1">Записаться на осмотр</button>');
+    }
+
+    var rw=document.getElementById('rec-when'); if(rw) rw.textContent=S.when;
+    var mn=document.getElementById('move-now'); if(mn) mn.textContent='Осмотр, КТ и план лечения · '+S.when;
+    var e1=document.getElementById('rec-empty'),u1=document.getElementById('rec-upcoming'),
+        c1=document.getElementById('rec-course'),p1=document.getElementById('rec-past');
+    if(e1){e1.hidden=S.paid; u1.hidden=!S.paid||S.stage>2; c1.hidden=S.stage<3; p1.hidden=S.stage<2}
+    var ps=document.getElementById('plan-state');
+    if(ps){ps.textContent=S.planOk?'Согласован':'На согласовании'; ps.className='pill '+(S.planOk?'ok':'acc')}
+  }
+  function unlock(n,msg){ if(S.stage<n){S.stage=n; save(); render(); toast(msg)} }
+
+  var TABS=[
+    {id:'s-home',l:'Главная',d:'M4 11l8-7 8 7v8a2 2 0 0 1-2 2h-4v-6h-4v6H6a2 2 0 0 1-2-2z'},
+    {id:'s-records',l:'Визиты',d:'M5 5h14v16H5zM9 3v4M15 3v4M8 12h8M8 16h5'},
+    {id:'s-teeth',l:'Зубы',d:'M12 6c-2-1.6-4.6-2-6.3-.6C3.8 6.8 3.4 9.9 4.3 13.6c.7 3 1.9 5.9 3.1 7.2 1 1.1 2.1.5 2.5-.9l.9-2.9c.5-1.5 2.6-1.5 3.1 0l.9 2.9c.4 1.4 1.5 2 2.5.9 1.2-1.3 2.4-4.2 3.1-7.2.9-3.7.5-6.8-1.4-8.2C17.3 4 14 4.4 12 6z'},
+    {id:'s-urgent',l:'Срочно',d:'M12 4l9 16H3zM12 10v4M12 17h.01'}
+  ];
+  function paintTabs(){
+    document.querySelectorAll('[data-tabs]').forEach(function(nav){
+      if(!nav.dataset.built){
+        nav.innerHTML=TABS.map(function(t){
+          return '<button data-tab="'+t.id+'"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="'+t.d+'"/></svg>'+t.l+'</button>';
+        }).join('');
+        nav.dataset.built='1';
+      }
+      nav.querySelectorAll('[data-tab]').forEach(function(b){b.classList.toggle('on',b.dataset.tab===cur)});
+    });
+  }
+  function show(id,push){
+    var el=document.getElementById(id); if(!el)return;
+    var need=GATE[id]||0;
+    if(need>S.stage){toast(LOCK[need]); return}
+    if(id==='s-home'||id==='s-records') render();
+    if(push!==false && id!==cur) stack.push(cur);
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.remove('on')});
+    el.classList.add('on'); cur=id;
+    var b=el.querySelector('.body'); if(b) b.scrollTop=0;
+    paintTabs();
+  }
+  function toast(msg){
+    var t=document.getElementById('toast'); t.textContent=msg; t.classList.add('on');
+    clearTimeout(t._h); t._h=setTimeout(function(){t.classList.remove('on')},2400);
+  }
+  paintTabs();
+
+  /* ── карта зубов ── */
+  var TEETH={
+    18:['missing','Удалён, зуб мудрости','Удалён в 2021 году. Замещать не нужно.'],
+    17:['ok','Здоров',''],16:['filled','Пломба','Поставлена в 2023 году, состояние хорошее. Гарантия до 2025 — истекла.'],
+    15:['ok','Здоров',''],14:['ok','Здоров',''],13:['ok','Здоров',''],12:['ok','Здоров',''],11:['ok','Здоров',''],
+    21:['ok','Здоров',''],22:['ok','Здоров',''],23:['ok','Здоров',''],
+    24:['caries','Пульпит — нужны каналы','Срочно. Два канала, лечение под микроскопом, два визита. 18 500 ₽.'],
+    25:['ok','Здоров',''],
+    26:['crown','Без нерва, нужна коронка','Каналы пролечены в 2022 году. Стенки тонкие — без коронки расколется. 32 000 ₽.'],
+    27:['ok','Здоров',''],28:['missing','Удалён, зуб мудрости','Удалён в 2021 году.'],
+    48:['missing','Удалён, зуб мудрости','Удалён в 2020 году.'],47:['ok','Здоров',''],
+    46:['implant','Имплант','Установлен в мае 2026, прижился. Осталось поставить коронку — 41 000 ₽. Гарантия 5 лет.'],
+    45:['ok','Здоров',''],44:['ok','Здоров',''],43:['ok','Здоров',''],42:['ok','Здоров',''],41:['ok','Здоров',''],
+    31:['ok','Здоров',''],32:['ok','Здоров',''],33:['ok','Здоров',''],34:['ok','Здоров',''],
+    35:['filled','Пломба','Поставлена в 2024 году, состояние хорошее.'],
+    36:['caries','Средний кариес','Срочно. Пломба из композита, один визит. 9 800 ₽.'],
+    37:['ok','Здоров',''],38:['missing','Удалён, зуб мудрости','Удалён в 2020 году.']
+  };
+  var UP=[18,17,16,15,14,13,12,11,21,22,23,24,25,26,27,28];
+  var LOW=[48,47,46,45,44,43,42,41,31,32,33,34,35,36,37,38];
+  function paintTeeth(){
+    ['jaw-up','jaw-low'].forEach(function(id,i){
+      var el=document.getElementById(id); if(!el)return;
+      el.innerHTML=(i?LOW:UP).map(function(n){
+        return '<button class="tooth '+TEETH[n][0]+'" data-tooth="'+n+'" aria-label="Зуб '+n+'">'+n+'</button>';
+      }).join('');
+    });
+  }
+  function showTooth(n){
+    var t=TEETH[n]; if(!t)return;
+    document.querySelectorAll('.tooth').forEach(function(x){x.classList.toggle('sel',x.dataset.tooth===String(n))});
+    document.getElementById('tooth-info').innerHTML=
+      '<div class="row" style="margin-bottom:6px"><b class="grow" style="font-family:var(--font-dsp);font-size:15px">Зуб '+n+' · '+t[1]+'</b>'+
+      (t[0]==='caries'?'<span class="pill alarm">Срочно</span>':(t[0]==='crown'?'<span class="pill warn">Планово</span>':''))+'</div>'+
+      '<div class="muted" style="font-size:13.5px">'+(t[2]||'Лечение не требуется. Наблюдаем на плановых осмотрах.')+'</div>';
+  }
+
+  var step=1;
+  function paintStep(){
+    document.querySelectorAll('#s-survey .qstep').forEach(function(s){s.hidden=(+s.dataset.step!==step)});
+    document.getElementById('q-bar').style.width=(step/3*100)+'%';
+    document.getElementById('q-count').textContent=step+' / 3';
+    document.getElementById('q-next').textContent=step<3?'Далее':'К выбору времени';
+  }
+
+  var code='';
+  function paintCode(){
+    document.querySelectorAll('#code i').forEach(function(c,i){c.textContent=code[i]||''; c.classList.toggle('fill',!!code[i])});
+    if(code.length===4) setTimeout(function(){show('s-home'); stack=[]; code=''; paintCode()},320);
+  }
+
+  function recount(name){
+    var all=document.querySelectorAll('[data-count="'+name+'"] .chk').length;
+    var on=document.querySelectorAll('[data-count="'+name+'"] .chk.on').length;
+    if(name==='course'){
+      var el=document.getElementById('course-count'); if(el) el.textContent=on+' / '+all;
+      var pct=all?Math.round(on/all*100):0;
+      var rp=document.getElementById('ring-pct'); if(rp) rp.textContent=pct+'%';
+      var ra=document.getElementById('ring-arc'); if(ra) ra.setAttribute('stroke-dashoffset',(194.8*(1-(all?on/all:0))).toFixed(1));
+      if(on>0) unlock(4,'Лечение началось — открыта памятка «После приёма»');
+      if(all&&on===all) unlock(5,'Лечение завершено — открыта профилактика');
+    }
+    if(name==='after'){
+      var ea=document.getElementById('after-count'); if(ea) ea.textContent=on+' / '+all;
+    }
+    render();
+  }
+
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('[data-go],[data-back],[data-k],[data-acc],[data-sheet],[data-close],[data-toast],[data-copy],[data-add],[data-theme-set],[data-tab],[data-tooth],.chip,.date,.slot,.opt,.chk,.scale button,#q-next,#move-ok,#plan-ok,#after-done,#demo-reset');
+    if(!t)return;
+
+    if(t.dataset.tab!==undefined){show(t.dataset.tab); return}
+    if(t.dataset.tooth!==undefined){
+      if(cur!=='s-teeth'){show('s-teeth')}
+      showTooth(+t.dataset.tooth);
+      var inf=document.getElementById('tooth-info'); if(inf) inf.scrollIntoView({block:'nearest'});
+      return;
+    }
+    if(t.dataset.go!==undefined){
+      if(t.dataset.go==='s-phone'){stack=[]}
+      if(t.dataset.go==='s-paid'&&!S.paid){S.paid=true; S.stage=Math.max(S.stage,2); save(); render()}
+      show(t.dataset.go); return;
+    }
+    if(t.dataset.back!==undefined){show(stack.pop()||'s-home',false); return}
+    if(t.dataset.k!==undefined){
+      if(t.dataset.k==='del'){code=code.slice(0,-1)}else if(code.length<4){code+=t.dataset.k}
+      paintCode(); return;
+    }
+    if(t.dataset.acc!==undefined){t.parentElement.classList.toggle('open'); return}
+    if(t.dataset.sheet!==undefined){document.getElementById(t.dataset.sheet).classList.add('on'); return}
+    if(t.dataset.close!==undefined){t.closest('.sheet').classList.remove('on'); return}
+    if(t.dataset.toast!==undefined){toast(t.dataset.toast); return}
+    if(t.dataset.copy!==undefined){
+      try{navigator.clipboard.writeText(t.dataset.copy).then(function(){toast('Номер скопирован')},function(){toast('Номер: '+t.dataset.copy)})}
+      catch(err){toast('Номер: '+t.dataset.copy)}
+      return;
+    }
+    if(t.dataset.add!==undefined){
+      t.closest('.sheet').classList.remove('on');
+      var list=document.getElementById('docs-mine');
+      if(list){
+        var d=document.createElement('div'); d.className='item';
+        d.innerHTML='<span class="ic" style="background:var(--warn-soft);color:var(--warn)">⏳</span><span class="grow"><b>'+t.dataset.add+'</b><small>Загружено только что · проверяет врач</small></span><span class="pill warn">На проверке</span>';
+        list.prepend(d);
+      }
+      toast('Файл отправлен врачу'); return;
+    }
+    if(t.dataset.themeSet!==undefined){applyTheme(t.dataset.themeSet); return}
+
+    if(t.id==='q-next'){ if(step<3){step++; paintStep(); document.querySelector('#s-survey .body').scrollTop=0}else{step=1; paintStep(); show('s-book')} return}
+    if(t.id==='plan-ok'){
+      S.planOk=true; save(); render();
+      document.getElementById('pay-what').textContent='Зуб 24 · первый этап каналов';
+      document.getElementById('pay-when').textContent='Понедельник, 9 ноября, 12:00';
+      document.getElementById('pay-sum1').textContent='11 000 ₽';
+      document.getElementById('pay-sum2').textContent='11 000 ₽';
+      document.getElementById('pay-btn').textContent='Оплатить 11 000 ₽';
+      document.getElementById('paid-title').textContent='План согласован';
+      document.getElementById('paid-sub').textContent='Первый визит — понедельник, 9 ноября, 12:00 · Мясницкая 24, кабинет 3';
+      document.getElementById('paid-sum').textContent='11 000 ₽';
+      S.stage=Math.max(S.stage,3); save(); render();
+      show('s-pay'); return;
+    }
+    if(t.id==='after-done'){
+      document.querySelectorAll('[data-count="after"] .chk').forEach(function(c){c.classList.add('on')});
+      recount('after'); toast('Этап пройден'); return;
+    }
+    if(t.id==='demo-reset'){
+      S={stage:1,paid:false,planOk:false,when:'2 ноября, понедельник · 12:00'}; save();
+      document.querySelectorAll('.chk').forEach(function(c){c.classList.remove('on')});
+      recount('course'); recount('after'); render(); show('s-home'); stack=[];
+      toast('Путь сброшен к первому этапу'); return;
+    }
+    if(t.id==='move-ok'){
+      var d2=document.querySelector('#move-dates .date.on'), s2=document.querySelector('#move-slots .slot.on');
+      S.when=(d2?d2.dataset.d:'4 ноября, среда')+' · '+(s2?s2.textContent:'10:00'); save(); render();
+      show('s-records',false); stack=['s-home']; toast('Визит перенесён на '+S.when); return;
+    }
+
+    if(t.classList.contains('chk')){
+      t.classList.toggle('on');
+      var holder=t.closest('[data-count]');
+      if(holder) recount(holder.dataset.count);
+      return;
+    }
+    if(t.parentElement&&t.parentElement.classList.contains('scale')){
+      t.parentElement.querySelectorAll('button').forEach(function(x){x.classList.remove('on')}); t.classList.add('on'); return;
+    }
+    if(t.classList.contains('chip')||t.classList.contains('date')||t.classList.contains('slot')){
+      var box=t.parentElement;
+      if(box.hasAttribute('data-multi')){t.classList.toggle('on')}
+      else{box.querySelectorAll('.chip,.date,.slot').forEach(function(x){x.classList.remove('on')}); t.classList.add('on')}
+      return;
+    }
+    if(t.classList.contains('opt')){
+      if(t.hasAttribute('data-toggle')){t.classList.toggle('on'); return}
+      var g=t.parentElement;
+      g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('on')}); t.classList.add('on');
+      return;
+    }
+  });
+
+  paintStep(); paintTeeth(); recount('course'); recount('after'); render();
+})();
+</script>
+
+</body></html>
